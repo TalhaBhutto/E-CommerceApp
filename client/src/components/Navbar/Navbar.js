@@ -55,13 +55,6 @@ const Navbar = () => {
             return matches ? (
               <>
                 <AppBar className={classes.appBar2} position="static" color="inherit">
-                  <div className={classes.brandContainer}>
-                    <Typography component={Link} onClick={dispatch(getPosts())} to="/" className={classes.heading} variant="h3" align="center">Memories</Typography>
-                    <img className={classes.image} src={memories} alt="icon" height="60" />
-                  </div>
-                </AppBar>
-
-                <AppBar className={classes.appBar2} position="static" color="inherit">
                   <div><TextField className={classes.SearchText} value={search} onChange={updateSearch}></TextField>
                       <Button onClick={searchPost}><SearchOutlinedIcon /></Button>
                     
