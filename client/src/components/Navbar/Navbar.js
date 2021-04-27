@@ -3,10 +3,9 @@ import { AppBar, Typography, Toolbar, Avatar, Button, TextField } from '@materia
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import decode from 'jwt-decode';
-import { searchPosts,getPosts } from '../../actions/posts'
+import { searchPosts} from '../../actions/posts'
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 
-import memories from '../../images/memories.png';
 import * as actionType from '../../constants/actionTypes';
 import useStyles from './styles';
 import Media from 'react-media';
