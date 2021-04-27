@@ -9,8 +9,8 @@ const App = () =>{
     
     return (
         <BrowserRouter>
-        <Container maxWidth="lg">
-            <NavBar/>
+         <NavBar/>
+         <Container maxWidth="lg">
             <Switch>
                 <Route path="/" exact component={Home}/>
                 <Route path="/auth" exact component={Auth}/>

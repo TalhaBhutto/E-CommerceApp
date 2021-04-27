@@ -19,6 +19,7 @@ export default makeStyles((theme) => ({
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: '10px 15px',
+    width:"100%"
   },
   SearchBar: {
     display: 'flex',
