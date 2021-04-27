@@ -12,13 +12,14 @@ export default makeStyles((theme) => ({
     padding: '10px 50px',
   },
   appBar2: {
-    borderRadius: 15,
-    margin: '30px 0',
+    // borderRadius: 15,
+    // margin: '30px 0',
+    margin:"0px",
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: '10px 15px',
+    padding: '0px 15px',
     width:"100%"
   },
   SearchBar: {
