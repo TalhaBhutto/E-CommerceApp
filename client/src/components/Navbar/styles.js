@@ -10,12 +10,10 @@ export default makeStyles((theme) => ({
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: '10px 50px',
-    marginBottom:"20px"
   },
   appBar2: {
     // borderRadius: 15,
     margin: '30px 0',
-    margin:"0px",
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
