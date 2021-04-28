@@ -22,7 +22,7 @@ const Post=({post,setCurrentId})=> {
               <><ThumbUpAltOutlined fontSize="small" />&nbsp;{post?.likes?.length} {post?.likes?.length === 1 ? 'Like' : 'Likes'}</>
             );
         }
-    ab
+    abc
         return <><ThumbUpAltOutlined fontSize="small" />&nbsp;Like</>;
       };
     
