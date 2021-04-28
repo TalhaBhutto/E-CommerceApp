@@ -25,10 +25,8 @@ const Post=({post,setCurrentId})=> {
     
         return <><ThumbUpAltOutlined fontSize="small" />&nbsp;Like</>;
       };
-    const displayTags=(p=post.tags)=>{
-        const t=p[0].split(" ");
-        return t.map((tag)=>tag[0]!=="#"?`#${tag} `:`${tag} `)
-    }
+    
+    
     return (
         <Card className={classes.card}>
             <CardMedia className={classes.media} image={post.selectedFile} title={post.title}/>
@@ -43,7 +41,7 @@ const Post=({post,setCurrentId})=> {
                 </Button>)}
             </div>
             <div className={classes.details}>
-                <Typography variant="body2" color="textSecondary">{displayTags()}</Typography>
+                <Typography variant="body2" color="textSecondary">{post?.price}</Typography>
             </div>
             <Typography className={classes.title} variant="h5">{post.title}</Typography>
             <CardContent>
