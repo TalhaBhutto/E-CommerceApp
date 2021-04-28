@@ -5,11 +5,29 @@ import {TextField,Button,Typography,Paper} from '@material-ui/core';
 //import FileBase from 'react-file-base64';
 import {useDispatch,useSelector} from 'react-redux';
 import { createPost,updatePost } from '../../actions/posts';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import NativeSelect from '@material-ui/core/NativeSelect';
+
 
 function Form({currentId,setCurrentId}) {
     const [postData, setPostData] = useState({
-        title:'',description:'',price:0,catagory:'',selectedFile:''
+        title:'',description:'',price:0,category:'',selectedFile:''
     });
+    const [state, setState] = React.useState({
+        age: '',
+        name: 'hai',
+      });
+    
+      const handleChange = (event) => {
+        const name = event.target.name;
+        setState({
+          ...state,
+          [name]: event.target.value,
+        });
+      };
     const user=JSON.parse(localStorage.getItem('profile'));
     const post = useSelector(state => currentId?state.posts.find((p)=>p._id===currentId):null)
     const classes=useStyles();
