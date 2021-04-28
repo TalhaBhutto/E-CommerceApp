@@ -8,7 +8,7 @@ import { createPost,updatePost } from '../../actions/posts';
 
 function Form({currentId,setCurrentId}) {
     const [postData, setPostData] = useState({
-        title:'',message:'',tags:'',selectedFile:''
+        title:'',description:'',price:0,catagory:'',selectedFile:''
     });
     const user=JSON.parse(localStorage.getItem('profile'));
     const post = useSelector(state => currentId?state.posts.find((p)=>p._id===currentId):null)
