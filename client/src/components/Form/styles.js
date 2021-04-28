@@ -27,4 +27,10 @@ export default makeStyles((theme) => ({
   selectEmpty: {
     marginTop: theme.spacing(2),
   },
+  spann:{
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  price:{maxWidth:"150px",minWidth:"120px",margin:"10px"},
 }));
