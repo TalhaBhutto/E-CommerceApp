@@ -14,7 +14,7 @@ export default makeStyles((theme) => ({
   },
   appBar2: {
     // borderRadius: 15,
-    // margin: '30px 0',
+    margin: '30px 0',
     margin:"0px",
     display: 'flex',
     flexDirection: 'row',
