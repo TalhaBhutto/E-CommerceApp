@@ -86,8 +86,8 @@ function Form({ currentId, setCurrentId }) {
                 <Typography varient="h6">{currentId ? `Edit` : 'Post'} an Ad</Typography>
                 <TextField name="title" variant="outlined" label="title" fullWidth value={postData.title} onChange={(e) => setPostData({ ...postData, title: e.target.value })} />
                 <TextField name="description" variant="outlined" label="description" fullWidth value={postData.message} onChange={(e) => setPostData({ ...postData, message: e.target.value })} />
-                <TextField name="price" type="number" variant="outlined" label="price" fullWidth value={postData.tags} onChange={(e) => setPostData({ ...postData, tags: e.target.value })} />
-                <FormControl className={classes.formControl}>
+                <TextField name="price" type="number" variant="outlined" label="price" half value={postData.tags} onChange={(e) => setPostData({ ...postData, tags: e.target.value })} />
+                <FormControl half className={classes.formControl}>
                     <InputLabel htmlFor="age-native-helper">Age</InputLabel>
                     <NativeSelect
                         value={state.age}
