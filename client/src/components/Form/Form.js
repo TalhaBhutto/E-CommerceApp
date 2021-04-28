@@ -57,7 +57,7 @@ function Form({currentId,setCurrentId}) {
         return(
             <Paper className={classes.paper}>
                 <Typography varient="h6" align="center">
-                    Please login to create your own memories and like other's as well.
+                    Please login to post Ads.
                 </Typography>
             </Paper>
         )
