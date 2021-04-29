@@ -36,6 +36,7 @@ function Form({ currentId, setCurrentId }) {
         setImage("");
     }
     const uploadImage = async (e) => {
+        setImage(e.target.value);
         const file = e.target.files[0];
         const base64 = await convertBase64(file);
         setPostData({ ...postData, selectedFile: base64 });
