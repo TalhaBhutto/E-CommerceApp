@@ -27,11 +27,13 @@ function Form({ currentId, setCurrentId }) {
         }
         clear();
     }
+    const [image,setImage]=useState();
     const clear = () => {
         setCurrentId(null);
         setPostData({
-            title: '', message: '', tags: '', selectedFile: ''
+            title: '', description: '', price: 0, category: '', selectedFile: ''
         });
+        setImage("");
     }
     const uploadImage = async (e) => {
         const file = e.target.files[0];
@@ -83,7 +85,7 @@ function Form({ currentId, setCurrentId }) {
                 </FormControl>
                 </span>
                 <div className={classes.fileInput}>
-                    <input type="file" multiple={false} onChange={(e) => { uploadImage(e) }} />
+                    <input value={image} type="file" multiple={false} onChange={(e) => { uploadImage(e) }} />
                 </div>
                 <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>
                 <Button variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Clear</Button>
