@@ -2,14 +2,8 @@ import React from 'react'
 import useStyles from './styles';
 import { useState, useEffect } from 'react';
 import { TextField, Button, Typography, Paper,InputLabel,FormHelperText,FormControl,NativeSelect } from '@material-ui/core';
-//import FileBase from 'react-file-base64';
 import { useDispatch, useSelector } from 'react-redux';
 import { createPost, updatePost } from '../../actions/posts';
-// import InputLabel from '@material-ui/core/InputLabel';
-// import FormHelperText from '@material-ui/core/FormHelperText';
-// import FormControl from '@material-ui/core/FormControl';
-// import NativeSelect from '@material-ui/core/NativeSelect';
-
 
 function Form({ currentId, setCurrentId }) {
     const [postData, setPostData] = useState({
@@ -18,7 +12,6 @@ function Form({ currentId, setCurrentId }) {
     const user = JSON.parse(localStorage.getItem('profile'));
     const post = useSelector(state => currentId ? state.posts.find((p) => p._id === currentId) : null)
     const classes = useStyles();
-    const [image, setImage] = useState();
     const dispatch = useDispatch();
     useEffect(() => {
         if (post) setPostData(post);
@@ -39,19 +32,22 @@ function Form({ currentId, setCurrentId }) {
         setPostData({
             title: '', message: '', tags: '', selectedFile: ''
         });
-        setImage("");
     }
     const uploadImage = async (e) => {
+        console.log("Here is error")
         const file = e.target.files[0];
         const base64 = await convertBase64(file);
         setPostData({ ...postData, selectedFile: base64 });
+        console.log("Here is error4")
     }
     const convertBase64 = (file) => {
         return new Promise((resolve, reject) => {
+            console.log("Here is error2")
             const fileReader = new FileReader();
             fileReader?.readAsDataURL(file);
             fileReader.onload = () => {
                 resolve(fileReader.result);
+                console.log("Here is error3")
             }
             fileReader.onerror = (error) => {
                 reject(error);
@@ -91,7 +87,7 @@ function Form({ currentId, setCurrentId }) {
                 </FormControl>
                 </span>
                 <div className={classes.fileInput}>
-                    <input value={image} type="file" multiple={false} onChange={(e) => { uploadImage(e) }} />
+                    <input value={postData.selectedFile} type="file" multiple={false} onChange={(e) => { uploadImage(e) }} />
                 </div>
                 <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>
                 <Button variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Clear</Button>

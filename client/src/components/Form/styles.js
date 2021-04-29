@@ -32,7 +32,7 @@ export default makeStyles((theme) => ({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  price:{maxWidth:"150px",minWidth:"120px",marginRight:"15px"},
-  category:{maxWidth:"150px",minWidth:"120px",marginLeft:"15px"},
+  price:{maxWidth:"160px",minWidth:"120px",marginRight:"15px"},
+  category:{maxWidth:"160px",minWidth:"120px",marginLeft:"15px"},
 
 }));
