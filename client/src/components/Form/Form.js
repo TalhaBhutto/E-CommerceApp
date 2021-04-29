@@ -67,7 +67,7 @@ function Form({ currentId, setCurrentId }) {
                 <TextField name="description" variant="outlined" label="description" fullWidth value={postData.message} onChange={(e) => setPostData({ ...postData, description: e.target.value })} />
                 <span className={classes.spann}>
                 <TextField name="price" type="number" className={classes.price} variant="outlined" label="price" value={postData.tags} onChange={(e) => setPostData({ ...postData, price: e.target.value })} />
-                <FormControl half className={classes.category}>
+                <FormControl className={classes.category}>
                     <InputLabel htmlFor="age-native-helper">Category</InputLabel>
                     <NativeSelect
                         value={postData.category}
