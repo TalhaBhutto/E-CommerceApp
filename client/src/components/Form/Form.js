@@ -34,20 +34,16 @@ function Form({ currentId, setCurrentId }) {
         });
     }
     const uploadImage = async (e) => {
-        console.log("Here is error")
         const file = e.target.files[0];
         const base64 = await convertBase64(file);
         setPostData({ ...postData, selectedFile: base64 });
-        console.log("Here is error4")
     }
     const convertBase64 = (file) => {
         return new Promise((resolve, reject) => {
-            console.log("Here is error2")
             const fileReader = new FileReader();
             fileReader?.readAsDataURL(file);
             fileReader.onload = () => {
                 resolve(fileReader.result);
-                console.log("Here is error3")
             }
             fileReader.onerror = (error) => {
                 reject(error);
@@ -87,7 +83,7 @@ function Form({ currentId, setCurrentId }) {
                 </FormControl>
                 </span>
                 <div className={classes.fileInput}>
-                    <input value={postData.selectedFile} type="file" multiple={false} onChange={(e) => { uploadImage(e) }} />
+                    <input type="file" multiple={false} onChange={(e) => { uploadImage(e) }} />
                 </div>
                 <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Submit</Button>
                 <Button variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Clear</Button>
