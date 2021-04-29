@@ -41,7 +41,8 @@ const Post=({post,setCurrentId})=> {
                 </Button>)}
             </div>
             <div className={classes.details}>
-                <Typography variant="body2" color="textSecondary">{post?.price}</Typography>
+                <Typography variant="h6" color="textSecondary">{"Rs. "+post.price}</Typography>
+                <Typography variant="h6" color="textSecondary">{post.category}</Typography>
             </div>
             <Typography className={classes.title} variant="h5">{post.title}</Typography>
             <CardContent>

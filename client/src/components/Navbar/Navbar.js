@@ -28,9 +28,6 @@ const Navbar = () => {
     }
   const logout = () => {
     dispatch({ type: actionType.LOGOUT });
-
-    history.push('/auth');
-
     setUser(null);
   };
 
@@ -94,7 +91,7 @@ const Navbar = () => {
                           <Typography className={classes.userName} variant="h6">{user?.result.name}</Typography>
                           <Button variant="contained" className={classes.logout} color="secondary" onClick={logout}>Logout</Button>
                         </div>
-                      ) : <Button component={Link} variant="contained" to="/auth" color="primary">Sign In</Button>
+                      ) : null
                       }
                     </Toolbar>
                   </AppBar>

@@ -55,11 +55,11 @@ function Auth() {
         console.log("Google sign in was unsuccessful.Try again later.\n"+error);
     }
     return (
-        <Container component="main" maxWidth="xs">
+        <Container component="main">
             <Paper className={classes.paper} elevation={3}>
-                <Avatar className={classes.avatar}>
+                {/* <Avatar className={classes.avatar}>
                     <LockOutlined/>
-                </Avatar>
+                </Avatar> */}
                 <Typography variant="h5">
                     {isSignup?'Sign Up':'Sign In'}
                 </Typography>

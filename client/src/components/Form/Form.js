@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { TextField, Button, Typography, Paper,InputLabel,FormHelperText,FormControl,NativeSelect } from '@material-ui/core';
 import { useDispatch, useSelector } from 'react-redux';
 import { createPost, updatePost } from '../../actions/posts';
+import Auth from '../Auth/Auth';
 
 function Form({ currentId, setCurrentId }) {
     const [postData, setPostData] = useState({
@@ -55,11 +56,7 @@ function Form({ currentId, setCurrentId }) {
     }
     if (!user?.result?.name) {
         return (
-            <Paper className={classes.paper}>
-                <Typography varient="h6" align="center">
-                    Please login to post Ads.
-                </Typography>
-            </Paper>
+            <Auth/>
         )
     }
     return (
