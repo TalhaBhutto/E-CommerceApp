@@ -4,7 +4,7 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import decode from 'jwt-decode';
-import { searchPosts } from '../../actions/posts'
+import { getPosts, searchPosts } from '../../actions/posts'
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 
 import * as actionType from '../../constants/actionTypes';
@@ -22,8 +22,10 @@ const Navbar = () => {
   const classes = useStyles();
   const searchPost = () => {
     dispatch(searchPosts(search));
-    console.log(search);
     setSearch("");
+  }
+  const goHome = () => {
+    dispatch(getPosts());
   }
   const updateSearch = (event) => {
     const val = event.target.value;
@@ -80,18 +82,25 @@ const Navbar = () => {
               : (
                 <>
                   <AppBar className={classes.appBar2} position="static" color="inherit">
-                    <span>
-                      <h1 style={{fontFamily:"monospace"}}>OLX</h1>
-                    
-                    </span>
+                    <Button style={{ fontFamily: "monospace" }} variant="text" onClick={goHome}>ECom</Button>
                     <div className={classes.SearchBar}>
                       <Autocomplete
                         id="combo-box-demo"
                         options={category}
-                        getOptionLabel={(option) => search!==""?"find "+search+" in "+option.title:option.title}
-                        style={{ minWidth:"200px",maxWidth:"300px"}}
-                        onChange={(e,v)=>{console.log(v)}} 
-                        renderInput={(params) => <TextField {...params} label="Search"  onChange={updateSearch} />}
+                        getOptionLabel={(option) => search !== "" ? "find " + search + " in " + option.title : option.title}
+                        style={{ minWidth: "200px", maxWidth: "300px" }}
+                        onChange={(e, v) => { console.log(v) }}
+                        value={search}
+                        renderInput={(params) => <TextField {...params} value={search} label="Search" onChange={updateSearch} />}
+                      />
+                      <Autocomplete
+                        {...defaultProps}
+                        id="controlled-demo"
+                        value={value}
+                        onChange={(event, newValue) => {
+                          setValue(newValue);
+                        }}
+                        renderInput={(params) => <TextField {...params} label="controlled" margin="normal" />}
                       />
                       <Button onClick={searchPost}><SearchOutlinedIcon /></Button>
                     </div>
