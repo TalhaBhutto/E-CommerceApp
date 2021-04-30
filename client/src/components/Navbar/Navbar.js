@@ -83,9 +83,9 @@ const Navbar = () => {
                       <Autocomplete
                         id="combo-box-demo"
                         options={category}
-                        getOptionLabel={(option) => option.title}
-                        style={{ maxWidth:"150px"}}
-                        renderInput={(params) => <TextField {...params} label="Search" />}
+                        getOptionLabel={(option) => search+option.title}
+                        style={{ minWidth:"150px",maxWidth:"250px"}}
+                        renderInput={(params) => <TextField {...params} label="Search" onChange={updateSearch} />}
                       />
                       <Button onClick={searchPost}><SearchOutlinedIcon /></Button>
                     </div>
