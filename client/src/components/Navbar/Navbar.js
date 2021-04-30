@@ -12,12 +12,7 @@ import useStyles from './styles';
 import Media from 'react-media';
 
 const Navbar = () => {
-  const [se, setSe] = useState("");
-  const category = [{ title: `${se}vehicles` }, { title: `${se}property` }, { title: `${se}electronics` }, { title: `${se}services` }];
-  const flatProps = {
-    options: category.map((option) => option.title),
-  };
-
+  const category = [{ title: `vehicles` }, { title: `property` }, { title: `electronics` }, { title: `services` }];
   const [search, setSearch] = useState("");
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
   const dispatch = useDispatch();
@@ -31,7 +26,6 @@ const Navbar = () => {
   }
   const updateSearch = (event) => {
     const val = event.target.value;
-    setSe(val + " ")
     setSearch(val)
   }
   const logout = () => {
@@ -90,7 +84,7 @@ const Navbar = () => {
                         id="combo-box-demo"
                         options={category}
                         getOptionLabel={(option) => option.title}
-                        style={{ maxWidth:"150px" }}
+                        style={{ maxWidth:"150px"}}
                         renderInput={(params) => <TextField {...params} label="Combo box" />}
                       />
                       <Button onClick={searchPost}><SearchOutlinedIcon /></Button>
