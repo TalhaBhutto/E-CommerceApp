@@ -12,8 +12,8 @@ import useStyles from './styles';
 import Media from 'react-media';
 
 const Navbar = () => {
-  const [se,setSe]=useState("");
-  const category = [{title:`${se}vehicles`}, {title:`${se}property`}, {title:`${se}electronics`}, {title:`${se}services`}];
+  const [se, setSe] = useState("");
+  const category = [{ title: `${se}vehicles` }, { title: `${se}property` }, { title: `${se}electronics` }, { title: `${se}services` }];
   const flatProps = {
     options: category.map((option) => option.title),
   };
@@ -31,7 +31,7 @@ const Navbar = () => {
   }
   const updateSearch = (event) => {
     const val = event.target.value;
-    setSe(val)
+    setSe(val + " ")
     setSearch(val)
   }
   const logout = () => {
@@ -87,11 +87,11 @@ const Navbar = () => {
 
                     <div className={classes.SearchBar}>
                       <Autocomplete
-                      style={{minWidth:"150px"}}
-                      onChange={updateSearch}
-                        {...flatProps}
-                        id="flat-demo"
-                        renderInput={(params) => <TextField {...params} label="search" margin="normal" />}
+                        id="combo-box-demo"
+                        options={category}
+                        getOptionLabel={(option) => option.title}
+                        style={{ maxWidth:"150px" }}
+                        renderInput={(params) => <TextField {...params} label="Combo box" />}
                       />
                       <Button onClick={searchPost}><SearchOutlinedIcon /></Button>
                     </div>
