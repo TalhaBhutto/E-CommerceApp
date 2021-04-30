@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { AppBar, Typography, Toolbar, Avatar, Button, TextField } from '@material-ui/core';
+import { AppBar, Typography, Toolbar, Avatar, Button, TextField,FormControl,InputLabel,NativeSelect } from '@material-ui/core';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import decode from 'jwt-decode';
@@ -24,8 +24,11 @@ const Navbar = () => {
   }
   const updateSearch = (event) => {
     const val = event.target.value;
-    setSearch(val);
+    if(val!==""){
+      <li>{`search ${val} in vehicles`}</li> 
     }
+    setSearch(val)
+  }
   const logout = () => {
     dispatch({ type: actionType.LOGOUT });
     setUser(null);
@@ -78,7 +81,7 @@ const Navbar = () => {
                   <AppBar className={classes.appBar2} position="static" color="inherit">
 
                     <div className={classes.SearchBar}>
-                      <TextField value={search} onChange={updateSearch}></TextField>
+                      
                       <Button onClick={searchPost}><SearchOutlinedIcon /></Button>
                     </div>
 
