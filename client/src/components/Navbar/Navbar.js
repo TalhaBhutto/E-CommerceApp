@@ -85,7 +85,7 @@ const Navbar = () => {
                         options={category}
                         getOptionLabel={(option) => option.title}
                         style={{ maxWidth:"150px"}}
-                        renderInput={(params) => <TextField {...params} label="Combo box" />}
+                        renderInput={(params) => <TextField {...params} label="Search" />}
                       />
                       <Button onClick={searchPost}><SearchOutlinedIcon /></Button>
                     </div>
