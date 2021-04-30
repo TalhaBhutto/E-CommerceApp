@@ -39,7 +39,7 @@ const Navbar = () => {
   };
   const defaultProps = {
     options: category,
-    getOptionLabel: (option) => option.title,
+    getOptionLabel: (option) =>  search !== "" ? "find " + search + " in " + option.title : option.title,
   };
 
   useEffect(() => {
