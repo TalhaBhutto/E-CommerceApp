@@ -12,7 +12,7 @@ import useStyles from './styles';
 import Media from 'react-media';
 
 const Navbar = () => {
-  //const category = ["vehicles", "property", "electronics", "services"];
+  const category = [{title:"vehicles"}, {title:"property"}, {title:"electronics"}, {title:"services"}];
   const defaultProps = {
     options: top100Films,
     getOptionLabel: (option) => option.title,
