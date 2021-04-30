@@ -37,6 +37,10 @@ const Navbar = () => {
     setUser(null);
     history.push('/')
   };
+  const defaultProps = {
+    options: category,
+    getOptionLabel: (option) => option.title,
+  };
 
   useEffect(() => {
     const token = user?.token;
@@ -96,9 +100,9 @@ const Navbar = () => {
                       <Autocomplete
                         {...defaultProps}
                         id="controlled-demo"
-                        value={value}
+                        value={search}
                         onChange={(event, newValue) => {
-                          setValue(newValue);
+                          setSearch(newValue);
                         }}
                         renderInput={(params) => <TextField {...params} label="controlled" margin="normal" />}
                       />
