@@ -17,6 +17,13 @@ function Form({ currentId, setCurrentId }) {
     useEffect(() => {
         if (post) setPostData(post);
     }, [post])
+    useEffect(() => {
+        if (!user?.result?.name) {
+            return (
+                <Auth/>
+            )
+        }
+    }, [user])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
