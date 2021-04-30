@@ -22,11 +22,13 @@ const Navbar = () => {
   const classes = useStyles();
   const searchPost = () => {
     dispatch(searchPosts(search));
+    console.log(search);
     setSearch("");
   }
   const updateSearch = (event) => {
     const val = event.target.value;
     setSearch(val)
+    console.log(search)
   }
   const logout = () => {
     dispatch({ type: actionType.LOGOUT });
@@ -85,10 +87,10 @@ const Navbar = () => {
                         options={category}
                         getOptionLabel={(option) => search!==""?"find "+search+" in "+option.title:option.title}
                         style={{ minWidth:"150px",maxWidth:"250px"}}
-                        onChange={updateSearch} 
-                        renderInput={(params) => <TextField {...params} label="Search" />}
+                        onChange={(e,v)=>{console.log(v)}} 
+                        renderInput={(params) => <TextField {...params} label="Search"  onChange={updateSearch} />}
                       />
-                      <Button onClick={searchPost}><SearchOutlinedIcon onChange={updateSearch} /></Button>
+                      <Button onClick={searchPost}><SearchOutlinedIcon /></Button>
                     </div>
 
                     {
