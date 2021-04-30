@@ -80,13 +80,16 @@ const Navbar = () => {
               : (
                 <>
                   <AppBar className={classes.appBar2} position="static" color="inherit">
-
+                    <span>
+                      <h1 style={{fontFamily:"monospace"}}>OLX</h1>
+                    
+                    </span>
                     <div className={classes.SearchBar}>
                       <Autocomplete
                         id="combo-box-demo"
                         options={category}
                         getOptionLabel={(option) => search!==""?"find "+search+" in "+option.title:option.title}
-                        style={{ minWidth:"150px",maxWidth:"250px"}}
+                        style={{ minWidth:"200px",maxWidth:"300px"}}
                         onChange={(e,v)=>{console.log(v)}} 
                         renderInput={(params) => <TextField {...params} label="Search"  onChange={updateSearch} />}
                       />
