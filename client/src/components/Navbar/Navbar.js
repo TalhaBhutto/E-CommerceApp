@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { AppBar, Typography, Toolbar, Avatar, Button, TextField, Autocomplete } from '@material-ui/core';
+import { AppBar, Typography, Toolbar, Avatar, Button, TextField } from '@material-ui/core';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import decode from 'jwt-decode';
@@ -11,14 +12,14 @@ import useStyles from './styles';
 import Media from 'react-media';
 
 const Navbar = () => {
-  const category = ["vehicles", "property", "electronics", "services"];
+  //const category = ["vehicles", "property", "electronics", "services"];
   const defaultProps = {
-    options: category,
+    options: top100Films,
     getOptionLabel: (option) => option.title,
   };
 
   const flatProps = {
-    options: category.map((option) => option.title),
+    options: top100Films.map((option) => option.title),
   };
 
   const [value, setValue] = React.useState(null);
@@ -93,12 +94,9 @@ const Navbar = () => {
 
                     <div className={classes.SearchBar}>
                       <Autocomplete
-                        {...defaultProps}
-                        id="disable-close-on-select"
-                        disableCloseOnSelect
-                        renderInput={(params) => (
-                          <TextField {...params} label="disableCloseOnSelect" margin="normal" />
-                        )}
+                        {...flatProps}
+                        id="flat-demo"
+                        renderInput={(params) => <TextField {...params} label="flat" margin="normal" />}
                       />
                       <Button onClick={searchPost}><SearchOutlinedIcon /></Button>
                     </div>
