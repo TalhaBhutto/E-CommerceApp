@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { AppBar, Typography, Toolbar, Avatar, Button, TextField,Autocomplete} from '@material-ui/core';
+import { AppBar, Typography, Toolbar, Avatar, Button, TextField, Autocomplete } from '@material-ui/core';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import decode from 'jwt-decode';
-import { searchPosts} from '../../actions/posts'
+import { searchPosts } from '../../actions/posts'
 import SearchOutlinedIcon from '@material-ui/icons/SearchOutlined';
 
 import * as actionType from '../../constants/actionTypes';
@@ -11,7 +11,7 @@ import useStyles from './styles';
 import Media from 'react-media';
 
 const Navbar = () => {
-  const category=["vehicles","property","electronics","services"];
+  const category = ["vehicles", "property", "electronics", "services"];
   const defaultProps = {
     options: category,
     getOptionLabel: (option) => option.title,
@@ -29,14 +29,14 @@ const Navbar = () => {
   const location = useLocation();
   const history = useHistory();
   const classes = useStyles();
-  const searchPost=()=>{
+  const searchPost = () => {
     dispatch(searchPosts(search));
     setSearch("");
   }
   const updateSearch = (event) => {
     const val = event.target.value;
-    if(val!==""){
-      <li>{`search ${val} in vehicles`}</li> 
+    if (val !== "") {
+      <li>{`search ${val} in vehicles`}</li>
     }
     setSearch(val)
   }
@@ -67,8 +67,8 @@ const Navbar = () => {
               <>
                 <AppBar className={classes.appBar2} position="static" color="inherit">
                   <div><TextField className={classes.SearchText} value={search} onChange={updateSearch}></TextField>
-                      <Button onClick={searchPost}><SearchOutlinedIcon /></Button>
-                    
+                    <Button onClick={searchPost}><SearchOutlinedIcon /></Button>
+
                   </div>
                   {
                     !user?.result ? (
@@ -92,7 +92,14 @@ const Navbar = () => {
                   <AppBar className={classes.appBar2} position="static" color="inherit">
 
                     <div className={classes.SearchBar}>
-                      
+                      <Autocomplete
+                        {...defaultProps}
+                        id="disable-close-on-select"
+                        disableCloseOnSelect
+                        renderInput={(params) => (
+                          <TextField {...params} label="disableCloseOnSelect" margin="normal" />
+                        )}
+                      />
                       <Button onClick={searchPost}><SearchOutlinedIcon /></Button>
                     </div>
 
