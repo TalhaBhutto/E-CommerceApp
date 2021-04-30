@@ -24,9 +24,10 @@ const Navbar = () => {
     dispatch(searchPosts(search));
     setSearch("");
   }
-  const updateSearch = (event) => {
+  const updateSearch = (event,value) => {
     const val = event.target.value;
     setSearch(val)
+    console.log(value)
   }
   const logout = () => {
     dispatch({ type: actionType.LOGOUT });
