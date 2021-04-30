@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { AppBar, Typography, Toolbar, Avatar, Button, TextField} from '@material-ui/core';
+import { AppBar, Typography, Toolbar, Avatar, Button, TextField,Autocomplete} from '@material-ui/core';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import decode from 'jwt-decode';
@@ -11,6 +11,17 @@ import useStyles from './styles';
 import Media from 'react-media';
 
 const Navbar = () => {
+  const category=["vehicles","property","electronics","services"];
+  const defaultProps = {
+    options: category,
+    getOptionLabel: (option) => option.title,
+  };
+
+  const flatProps = {
+    options: category.map((option) => option.title),
+  };
+
+  const [value, setValue] = React.useState(null);
   const [search, setSearch] = useState("");
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
   const dispatch = useDispatch();
