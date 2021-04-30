@@ -12,8 +12,9 @@ import useStyles from './styles';
 import Media from 'react-media';
 
 const Navbar = () => {
-  const category = [{ title: `vehicles` }, { title: `property` }, { title: `electronics` }, { title: `services` }];
+  const category = [{title:''},{ title: `Vehicles` }, { title: `Property` }, { title: `Electronics` }, { title: `Services` }];
   const [search, setSearch] = useState("");
+  const [cat,setCat]=useState({title:""});
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
   const dispatch = useDispatch();
   const posts = useSelector(state => state.posts)
@@ -21,7 +22,8 @@ const Navbar = () => {
   const history = useHistory();
   const classes = useStyles();
   const searchPost = () => {
-    dispatch(searchPosts(search));
+    dispatch(searchPosts(search+"th3"+cat.title));
+    console.log(search+cat.title)
     setSearch("");
   }
   const goHome = () => {
@@ -30,18 +32,12 @@ const Navbar = () => {
   const updateSearch = (event) => {
     const val = event.target.value;
     setSearch(val)
-    console.log(search)
   }
   const logout = () => {
     dispatch({ type: actionType.LOGOUT });
     setUser(null);
     history.push('/')
   };
-  const defaultProps = {
-    options: category,
-    getOptionLabel: (option) =>  search !== "" ? "find " + search + " in " + option.title : option.title,
-  };
-
   useEffect(() => {
     const token = user?.token;
 
@@ -62,17 +58,19 @@ const Navbar = () => {
             return matches ? (
               <>
                 <AppBar className={classes.appBar2} position="static" color="inherit">
-                  <div><TextField className={classes.SearchText} value={search} onChange={updateSearch}></TextField>
-                    <Button onClick={searchPost}><SearchOutlinedIcon /></Button>
-
+                  <div>
+                    <Autocomplete
+                        id="combo-box-demo"
+                        options={category}
+                        getOptionLabel={(option) => search !== "" ? (option.title==""?search:"find " + search + " in " + option.title) : option.title}
+                        className={classes.SearchText}
+                        onChange={(e,v)=>setCat(v)}
+                        renderInput={(params) => <TextField {...params} value={""} label="Search" onChange={updateSearch} />}
+                      />
+                      <Button onClick={searchPost}><SearchOutlinedIcon /></Button>
                   </div>
                   {
-                    !user?.result ? (
-                      <Button component={Link} to="/auth" variant="contained" color="primary">Sign In</Button>
-                    ) :
-                      (
-                        <Button variant="contained" className={classes.logout} color="secondary" onClick={logout}>Logout</Button>
-                      )
+                    user?.result ? <Button variant="contained" className={classes.logout} color="secondary" onClick={logout}>Logout</Button>:null
                   }
                 </AppBar>
                 {user?.result ? (
@@ -91,20 +89,10 @@ const Navbar = () => {
                       <Autocomplete
                         id="combo-box-demo"
                         options={category}
-                        getOptionLabel={(option) => search !== "" ? "find " + search + " in " + option.title : option.title}
+                        getOptionLabel={(option) => search !== "" ? (option.title==""?search:"find " + search + " in " + option.title) : option.title}
                         style={{ minWidth: "200px", maxWidth: "300px" }}
-                        onChange={(e, v) => { console.log(v) }}
-                        value={search}
-                        renderInput={(params) => <TextField {...params} value={search} label="Search" onChange={updateSearch} />}
-                      />
-                      <Autocomplete
-                        {...defaultProps}
-                        id="controlled-demo"
-                        value={search}
-                        onChange={(event, newValue) => {
-                          setSearch(newValue);
-                        }}
-                        renderInput={(params) => <TextField {...params} label="controlled" margin="normal" />}
+                        onChange={(e,v)=>setCat(v)}
+                        renderInput={(params) => <TextField {...params} value={""} label="Search" onChange={updateSearch} />}
                       />
                       <Button onClick={searchPost}><SearchOutlinedIcon /></Button>
                     </div>

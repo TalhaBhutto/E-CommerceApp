@@ -87,9 +87,17 @@ export const likePost = async (req, res) => {
 }
 export const searchPost=async (req,res,next)=>{
     const { id } = req.params;
-
+    const val=id.split("th3");
     try {
-        const post = await postads.find({title:{$regex:id,$options:'$i'}});
+        //postads.ensureIndex({"title":"text","category":"text"})
+        //const post=postads.runCommand("text",{search:`${val[0]} ${val[1]}`})
+        //const post = await postads.find({title:{$regex:val[0],$options:'$i'}});
+        const post = await postads.find(
+            {$and:[
+                {title:{$regex:val[0],$options:'$i'}},
+                {category:{$regex:val[1],$options:'$i'}}
+            ]}
+        )
         res.status(200).json(post);
     } catch (error) {
         res.status(404).json({ message: error.message });
