@@ -86,7 +86,8 @@ const Navbar = () => {
                         options={category}
                         getOptionLabel={(option) => search!==""?"find "+search+" in "+option.title:option.title}
                         style={{ minWidth:"150px",maxWidth:"250px"}}
-                        renderInput={(params) => <TextField {...params} label="Search" onChange={updateSearch} />}
+                        onChange={updateSearch} 
+                        renderInput={(params) => <TextField {...params} label="Search" />}
                       />
                       <Button onClick={searchPost}><SearchOutlinedIcon /></Button>
                     </div>
