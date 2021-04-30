@@ -14,12 +14,12 @@ import Media from 'react-media';
 const Navbar = () => {
   const category = [{title:"vehicles"}, {title:"property"}, {title:"electronics"}, {title:"services"}];
   const defaultProps = {
-    options: top100Films,
+    options: category,
     getOptionLabel: (option) => option.title,
   };
 
   const flatProps = {
-    options: top100Films.map((option) => option.title),
+    options: category.map((option) => option.title),
   };
 
   const [value, setValue] = React.useState(null);
