@@ -24,10 +24,9 @@ const Navbar = () => {
     dispatch(searchPosts(search));
     setSearch("");
   }
-  const updateSearch = (event,value) => {
+  const updateSearch = (event) => {
     const val = event.target.value;
     setSearch(val)
-    console.log(value)
   }
   const logout = () => {
     dispatch({ type: actionType.LOGOUT });
@@ -89,7 +88,7 @@ const Navbar = () => {
                         onChange={updateSearch} 
                         renderInput={(params) => <TextField {...params} label="Search" />}
                       />
-                      <Button onClick={searchPost}><SearchOutlinedIcon /></Button>
+                      <Button onClick={searchPost}><SearchOutlinedIcon onChange={updateSearch} /></Button>
                     </div>
 
                     {
