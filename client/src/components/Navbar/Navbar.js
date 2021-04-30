@@ -12,17 +12,12 @@ import useStyles from './styles';
 import Media from 'react-media';
 
 const Navbar = () => {
-  const category = [{title:"vehicles"}, {title:"property"}, {title:"electronics"}, {title:"services"}];
-  const defaultProps = {
-    options: category,
-    getOptionLabel: (option) => option.title,
-  };
-
+  const [se,setSe]=useState("");
+  const category = [{title:`${se}vehicles`}, {title:`${se}property`}, {title:`${se}electronics`}, {title:`${se}services`}];
   const flatProps = {
     options: category.map((option) => option.title),
   };
 
-  const [value, setValue] = React.useState(null);
   const [search, setSearch] = useState("");
   const [user, setUser] = useState(JSON.parse(localStorage.getItem('profile')));
   const dispatch = useDispatch();
@@ -36,9 +31,7 @@ const Navbar = () => {
   }
   const updateSearch = (event) => {
     const val = event.target.value;
-    if (val !== "") {
-      <li>{`search ${val} in vehicles`}</li>
-    }
+    setSe(val)
     setSearch(val)
   }
   const logout = () => {
@@ -94,9 +87,11 @@ const Navbar = () => {
 
                     <div className={classes.SearchBar}>
                       <Autocomplete
+                      style={{minWidth:"150px"}}
+                      onChange={updateSearch}
                         {...flatProps}
                         id="flat-demo"
-                        renderInput={(params) => <TextField {...params} label="flat" margin="normal" />}
+                        renderInput={(params) => <TextField {...params} label="search" margin="normal" />}
                       />
                       <Button onClick={searchPost}><SearchOutlinedIcon /></Button>
                     </div>

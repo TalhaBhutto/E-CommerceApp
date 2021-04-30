@@ -24,7 +24,7 @@ export default makeStyles((theme) => ({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   heading: {
     color: 'rgba(0,183,255, 1)',
