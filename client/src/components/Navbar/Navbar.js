@@ -58,6 +58,7 @@ const Navbar = () => {
             return matches ? (
               <>
                 <AppBar className={classes.appBar2} position="static" color="inherit">
+                <Button style={{ fontFamily: "monospace" }} variant="text" onClick={goHome}>Home</Button>
                   <div>
                     <Autocomplete
                         id="combo-box-demo"
@@ -84,7 +85,7 @@ const Navbar = () => {
               : (
                 <>
                   <AppBar className={classes.appBar2} position="static" color="inherit">
-                    <Button style={{ fontFamily: "monospace" }} variant="text" onClick={goHome}>ECom</Button>
+                    <Button style={{ fontFamily: "monospace" }} variant="text" onClick={goHome}>Home</Button>
                     <div className={classes.SearchBar}>
                       <Autocomplete
                         id="combo-box-demo"
