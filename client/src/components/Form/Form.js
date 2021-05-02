@@ -92,7 +92,7 @@ function Form({ currentId, setCurrentId }) {
                 <div className={classes.fileInput}>
                     <input value={image} type="file" multiple={false} onChange={(e) => { uploadImage(e) }} />
                 </div>
-                <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Post A</Button>
+                <Button className={classes.buttonSubmit} variant="contained" color="primary" size="large" type="submit" fullWidth>Post Ad</Button>
                 <Button variant="contained" color="secondary" size="small" onClick={clear} fullWidth>Clear Form</Button>
             </form>
         </Paper>
