@@ -39,7 +39,7 @@ function Form({ currentId, setCurrentId }) {
     const clear = () => {
         setCurrentId(null);
         setPostData({
-            title: '', description: '', price: 0, category: '', selectedFile: ''
+            title: '', description: '',contact:'', price: 0, category: '', selectedFile: ''
         });
         setImage("");
     }
@@ -89,6 +89,7 @@ function Form({ currentId, setCurrentId }) {
                     <FormHelperText>Select suitable category.</FormHelperText>
                 </FormControl>
                 </span>
+                <TextField name="contact" variant="outlined" label="contact" fullWidth value={postData.contact} onChange={(e) => setPostData({ ...postData, contact: e.target.value })} />
                 <div className={classes.fileInput}>
                     <input value={image} type="file" multiple={false} onChange={(e) => { uploadImage(e) }} />
                 </div>
