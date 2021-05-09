@@ -90,8 +90,8 @@ function Form({ currentId, setCurrentId }) {
                 </FormControl>
                 </span>
                 <span className={classes.spann}>
-                <TextField name="contact" variant="outlined" label="contact" fullWidth value={postData.contact} onChange={(e) => setPostData({ ...postData, contact: e.target.value })} />
-                <TextField name="year" variant="outlined" label="year" fullWidth value={postData.year} onChange={(e) => setPostData({ ...postData, year: e.target.value })} />
+                <TextField name="contact" variant="outlined" label="contact" value={postData.contact} onChange={(e) => setPostData({ ...postData, contact: e.target.value })} />
+                <TextField name="year" variant="outlined" label="year" value={postData.year} onChange={(e) => setPostData({ ...postData, year: e.target.value })} />
                 </span>
                 <div className={classes.fileInput}>
                     <input value={image} type="file" multiple={false} onChange={(e) => { uploadImage(e) }} />
