@@ -8,7 +8,7 @@ import Auth from '../Auth/Auth';
 
 function Form({ currentId, setCurrentId }) {
     const [postData, setPostData] = useState({
-        title: '', description: '', price: 0, category: '', selectedFile: ''
+        title: '',year:'',contact:'', description: '', price: 0, category: '', selectedFile: ''
     });
     const user = JSON.parse(localStorage.getItem('profile'));
     const post = useSelector(state => currentId ? state.posts.find((p) => p._id === currentId) : null)
@@ -39,7 +39,7 @@ function Form({ currentId, setCurrentId }) {
     const clear = () => {
         setCurrentId(null);
         setPostData({
-            title: '', description: '',contact:'', price: 0, category: '', selectedFile: ''
+            title: '', description: '',year:'',contact:'', price: 0, category: '', selectedFile: ''
         });
         setImage("");
     }
@@ -89,7 +89,10 @@ function Form({ currentId, setCurrentId }) {
                     <FormHelperText>Select suitable category.</FormHelperText>
                 </FormControl>
                 </span>
+                <span className={classes.spann}>
                 <TextField name="contact" variant="outlined" label="contact" fullWidth value={postData.contact} onChange={(e) => setPostData({ ...postData, contact: e.target.value })} />
+                <TextField name="year" variant="outlined" label="year" fullWidth value={postData.year} onChange={(e) => setPostData({ ...postData, year: e.target.value })} />
+                </span>
                 <div className={classes.fileInput}>
                     <input value={image} type="file" multiple={false} onChange={(e) => { uploadImage(e) }} />
                 </div>
