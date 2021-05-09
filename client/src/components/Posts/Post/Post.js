@@ -31,7 +31,7 @@ const Post=({post,setCurrentId})=> {
         <Card className={classes.card}>
             <CardMedia className={classes.media} image={post.selectedFile} title={post.title}/>
             <div className={classes.overlay}>
-                <Typography variant="h6">{post.name}</Typography>
+                <Typography variant="h6">{post.title}</Typography>
                 <Typography variant="h6">{moment(post.createdAt).fromNow()}</Typography>
             </div>
             <div className={classes.overlay2}>
@@ -44,9 +44,9 @@ const Post=({post,setCurrentId})=> {
                 <Typography variant="h6" color="textSecondary">{"Rs. "+post.price}</Typography>
                 <Typography variant="h6" color="textSecondary">{post.category}</Typography>
             </div>
-            <Typography className={classes.title} variant="h5">{post.title}</Typography>
+            <Typography className={classes.title} variant="h5">{post.description}</Typography>
             <CardContent>
-            <Typography variant="body2" color="textSecondary">{post.description}</Typography>
+            <Typography variant="body2" color="textSecondary">{"Cell# : "+post.contact}</Typography>
             </CardContent>
             <CardActions className={classes.cardActions}>
             <Button size="small" color="primary" disabled={!user?.result} onClick={() => dispatch(likePost(post._id))}>
