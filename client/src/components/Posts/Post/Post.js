@@ -44,10 +44,11 @@ const Post=({post,setCurrentId})=> {
                 <Typography variant="h6" color="textSecondary">{"Rs. "+post.price}</Typography>
                 <Typography variant="h6" color="textSecondary">{post.category}</Typography>
             </div>
-            <Typography className={classes.title} variant="h5">{post.description}</Typography>
-            <CardContent>
-            <Typography variant="body2" color="textSecondary">{"Cell# : "+post.contact}</Typography>
-            </CardContent>
+            <Typography className={classes.title} variant="h6">{post.description}</Typography>
+            <div className={classes.details}>
+                <Typography variant="body2" color="textSecondary">{"Cell# : "+post.contact}</Typography>
+                <Typography variant="body2" color="textSecondary">{"Make : "+post.year}</Typography>
+            </div>  
             <CardActions className={classes.cardActions}>
             <Button size="small" color="primary" disabled={!user?.result} onClick={() => dispatch(likePost(post._id))}>
           <Likes />

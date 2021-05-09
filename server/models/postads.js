@@ -21,6 +21,10 @@ const postSchema = mongoose.Schema({
         type:String,
         required:true
     },
+    year:{
+        type:String,
+        required:true
+    },
     price:{
         type:Number,
         required:true

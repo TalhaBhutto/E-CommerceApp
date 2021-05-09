@@ -43,11 +43,11 @@ export const createPost = async (req, res) => {
 
 export const updatePost = async (req, res) => {
     const { id } = req.params;
-    const { title, description, creator,contact,price,category, selectedFile } = req.body;
+    const { title, description, creator,year,contact,price,category, selectedFile } = req.body;
     
     if (!mongoose.Types.ObjectId.isValid(id)) return res.status(404).send(`No post with id: ${id}`);
 
-    const updatedPost = { creator, title, description, contact,price,category, selectedFile, _id: id };
+    const updatedPost = { creator, title,year, description, contact,price,category, selectedFile, _id: id };
 
     await postads.findByIdAndUpdate(id, updatedPost, { new: true });
 
